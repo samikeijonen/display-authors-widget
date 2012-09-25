@@ -155,13 +155,13 @@ class  Multi_Author_Widget extends WP_Widget {
 
 		/* Set up the defaults. */
 		$defaults = array(
-			'title' 			=> __( 'Authors', 'multi-author-widget' ),
+			'title'				=> __( 'Authors', 'multi-author-widget' ),
 			'role'				=> 'editor',
 			'show_post_count'	=> 1,
 			'show_bio'			=> 1,
 			'show_gravatar'		=> 1,
-			'avatar_size' 		=> '60',
-			'avatar_align' 		=> 'alignleft'
+			'avatar_size'		=> '60',
+			'avatar_align'		=> 'alignleft'
 	
 		);
 
