@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Multi Author Widget
  * Plugin URI: http://foxnet.fi/en
- * Description: Register Widget to show authors in a sidebar.
+ * Description: Register widget to display authors by role in a sidebar.
  * Version: 0.1
  * Author: Sami Keijonen
  * Author URI: http://foxnet.fi/en
@@ -68,6 +68,9 @@ class  Multi_Author_Widget extends WP_Widget {
 
 		/* Get the avatar size. */
 		$avatar_size = absint( $instance['avatar_size'] );
+		
+		/* Get the limit how many authors to display. */
+		$limit = absint( $instance['limit'] );
 
 		/* Open the before widget HTML. */
 		echo $before_widget;
@@ -77,7 +80,7 @@ class  Multi_Author_Widget extends WP_Widget {
 			echo $before_title . apply_filters( 'widget_title',  $instance['title'], $instance, $this->id_base ) . $after_title;
 		
 		/* Get only users by role, which user wants. */
-		$users = get_users( array( 'role' => $instance['role'] ) );
+		$users = get_users( array( 'role' => $instance['role'], 'number' => $limit ) );
 
 			foreach ( $users as $author ) :
 			
@@ -141,6 +144,7 @@ class  Multi_Author_Widget extends WP_Widget {
 		$instance['show_gravatar'] = strip_tags( $new_instance['show_gravatar'] );
 		$instance['avatar_size'] = strip_tags( $new_instance['avatar_size'] );
 		$instance['avatar_align'] = strip_tags( $new_instance['avatar_align'] );
+		$instance['limit'] = strip_tags( $new_instance['limit'] );
 		
 		return $instance;
 		
@@ -161,7 +165,8 @@ class  Multi_Author_Widget extends WP_Widget {
 			'show_bio' 			=> 1,
 			'show_gravatar'		=> 1,
 			'avatar_size'		=> '60',
-			'avatar_align'		=> 'alignleft'
+			'avatar_align'		=> 'alignleft',
+			'limit'				=> 50
 	
 		);
 
@@ -199,17 +204,22 @@ class  Multi_Author_Widget extends WP_Widget {
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'avatar_size' ); ?>"><?php _e( 'Avatar Size:', 'multi-author-widget' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'avatar_size' ); ?>"><?php _e( 'Gravatar Size:', 'multi-author-widget' ); ?></label>
 				<input style="float:right;width:66px;" type="text" class="widefat" id="<?php echo $this->get_field_id( 'avatar_size' ); ?>" name="<?php echo $this->get_field_name( 'avatar_size' ); ?>" value="<?php echo $instance['avatar_size']; ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'avatar_align' ); ?>"><?php _e( 'Avatar Alignment:', 'multi-author-widget' ); ?></label> 
+				<label for="<?php echo $this->get_field_id( 'avatar_align' ); ?>"><?php _e( 'Gravatar Alignment:', 'multi-author-widget' ); ?></label> 
 				<select style="float:right;max-width:66px;" class="widefat" id="<?php echo $this->get_field_id( 'avatar_align' ); ?>" name="<?php echo $this->get_field_name( 'avatar_align' ); ?>">
 					<?php foreach ( array( 'alignnone' => __( 'None', 'multi-author-widget'), 'alignleft' => __( 'Left', 'multi-author-widget' ), 'alignright' => __( 'Right', 'multi-author-widget' ), 'aligncenter' => __( 'Center', 'multi-author-widget' ) ) as $option_value => $option_label ) { ?>
 						<option value="<?php echo $option_value; ?>" <?php selected( $instance['avatar_align'], $option_value ); ?>><?php echo $option_label; ?></option>
 					<?php } ?>
 				</select>
+			</p>
+			
+			<p>
+				<input style="float:right;width:66px;" type="text" class="widefat" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo $instance['limit']; ?>" />
+				<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit the number of authors displayed:', 'multi-author-widget' ); ?></label>
 			</p>
 
 		<div style="clear:both;">&nbsp;</div>
