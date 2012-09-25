@@ -206,7 +206,7 @@ class  Multi_Author_Widget extends WP_Widget {
 			<p>
 				<label for="<?php echo $this->get_field_id( 'avatar_align' ); ?>"><?php _e( 'Avatar Alignment:', 'multi-author-widget' ); ?></label> 
 				<select style="float:right;max-width:66px;" class="widefat" id="<?php echo $this->get_field_id( 'avatar_align' ); ?>" name="<?php echo $this->get_field_name( 'avatar_align' ); ?>">
-					<?php foreach ( array( 'alignnone' => __( 'None', 'widget-user-profile'), 'alignleft' => __( 'Left', 'widget-user-profile' ), 'alignright' => __( 'Right', 'widget-user-profile' ), 'aligncenter' => __( 'Center', 'widget-user-profile' ) ) as $option_value => $option_label ) { ?>
+					<?php foreach ( array( 'alignnone' => __( 'None', 'multi-author-widget'), 'alignleft' => __( 'Left', 'multi-author-widget' ), 'alignright' => __( 'Right', 'multi-author-widget' ), 'aligncenter' => __( 'Center', 'multi-author-widget' ) ) as $option_value => $option_label ) { ?>
 						<option value="<?php echo $option_value; ?>" <?php selected( $instance['avatar_align'], $option_value ); ?>><?php echo $option_label; ?></option>
 					<?php } ?>
 				</select>
