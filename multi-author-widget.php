@@ -102,15 +102,16 @@ class  Multi_Author_Widget extends WP_Widget {
 						<?php
 						/* Output the authors gravatar if selected. */
 						if ( $instance['show_gravatar'] ) {
-							$avatar = get_avatar( get_the_author_meta( 'user_email', $id ), $avatar_size, '', get_the_author_meta( 'display_name', $id ) );
-							//echo str_replace( "class='", "class='{$instance['avatar_align']} ", $avatar );
-							if ( $instance['avatar_align'] == 'alignright' ) 
-								echo '<div style="float: right; margin: 0 0 0.5em 1em;">'. $avatar . '</div>';
-							elseif  ( $instance['avatar_align'] == 'alignnone' ) 
-								echo '<div style="float: none; margin: 0 1em 0.5em 0;">'. $avatar . '</div>';
-							else 
-								echo '<div style="float: left; margin: 0 1em 0.5em 0;">'. $avatar . '</div>';
 							
+							$avatar = get_avatar( get_the_author_meta( 'user_email', $id ), $avatar_size, '', get_the_author_meta( 'display_name', $id ) );
+							
+							/* Get extra class from settings. */
+							$extra_class= 'multi-author-widget-' . $instance['avatar_align']; 
+							?>
+							
+							<div class="<?php echo $extra_class; ?>"><?php echo $avatar; ?></div>
+							
+							<?php	
 						}
 						?>
 					</a>
@@ -238,6 +239,8 @@ class  Multi_Author_Widget extends WP_Widget {
 /* register Multi Author Widget. */
 add_action( 'widgets_init', create_function( '', 'register_widget( "Multi_Author_Widget" );' ) );
 
+/* Set up the plugin on the 'plugins_loaded' hook. */
+add_action( 'plugins_loaded', 'multi_author_widget_setup' );
 
 /**
  * Plugin setup function.  Loads actions and filters to their appropriate hook.
@@ -249,10 +252,23 @@ function multi_author_widget_setup() {
 	/* Load the translation of the plugin. */
 	load_plugin_textdomain( 'multi-author-widget', false, 'multi-author-widget/languages' );
 	
+	/* Enqueue styles. */
+	add_action( 'wp_enqueue_scripts', 'multi_author_widget_styles' );
 	
 }
 
-/* Set up the plugin on the 'plugins_loaded' hook. */
-add_action( 'plugins_loaded', 'multi_author_widget_setup' );
+/**
+ * Enqueue styles.
+ *
+ * @since 0.1.0
+ */
+function multi_author_widget_styles() {
+
+	if ( !is_admin() )
+		wp_enqueue_style( 'multi-author-widget-css', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'css/multi-author-widget.css', false, 0.1, 'all' );
+	
+}
+
+
 
 ?>

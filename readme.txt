@@ -25,7 +25,7 @@ is Author name ($number).
 * Display Author Bio?: If checked, this will display the author's bio as set in their WordPress profile page.
 * Display Author Gravatar?: If checked, this will display the author's gravatar.
 * Gravatar Size: This is the size of the gravatar image in pixels. Do not write px or pixels in this field. If you want gravatar size to be 50px, then write "50" in this field.
-* Gravatar Alignment: Choose whether you want to display gravatar on the left, right, center or no alignment at all.
+* Gravatar Alignment: Choose whether you want to display gravatar on the left, right or no alignment at all.
 * Limit: This will allow you to set the number of authors that are displayed in the widget.
 
 
