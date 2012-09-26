@@ -103,7 +103,14 @@ class  Multi_Author_Widget extends WP_Widget {
 						/* Output the authors gravatar if selected. */
 						if ( $instance['show_gravatar'] ) {
 							$avatar = get_avatar( get_the_author_meta( 'user_email', $id ), $avatar_size, '', get_the_author_meta( 'display_name', $id ) );
-							echo str_replace( "class='", "class='{$instance['avatar_align']} ", $avatar );
+							//echo str_replace( "class='", "class='{$instance['avatar_align']} ", $avatar );
+							if ( $instance['avatar_align'] == 'alignright' ) 
+								echo '<div style="float: right; margin: 0 0 0.5em 1em;">'. $avatar . '</div>';
+							elseif  ( $instance['avatar_align'] == 'alignnone' ) 
+								echo '<div style="float: none; margin: 0 1em 0.5em 0;">'. $avatar . '</div>';
+							else 
+								echo '<div style="float: left; margin: 0 1em 0.5em 0;">'. $avatar . '</div>';
+							
 						}
 						?>
 					</a>
@@ -211,9 +218,9 @@ class  Multi_Author_Widget extends WP_Widget {
 			<p>
 				<label for="<?php echo $this->get_field_id( 'avatar_align' ); ?>"><?php _e( 'Gravatar Alignment:', 'multi-author-widget' ); ?></label> 
 				<select style="float:right;max-width:66px;" class="widefat" id="<?php echo $this->get_field_id( 'avatar_align' ); ?>" name="<?php echo $this->get_field_name( 'avatar_align' ); ?>">
-					<?php foreach ( array( 'alignnone' => __( 'None', 'multi-author-widget'), 'alignleft' => __( 'Left', 'multi-author-widget' ), 'alignright' => __( 'Right', 'multi-author-widget' ), 'aligncenter' => __( 'Center', 'multi-author-widget' ) ) as $option_value => $option_label ) { ?>
+					<?php foreach ( array( 'alignnone' => __( 'None', 'multi-author-widget'), 'alignleft' => __( 'Left', 'multi-author-widget' ), 'alignright' => __( 'Right', 'multi-author-widget' ) ) as $option_value => $option_label ) { ?>
 						<option value="<?php echo $option_value; ?>" <?php selected( $instance['avatar_align'], $option_value ); ?>><?php echo $option_label; ?></option>
-					<?php } ?>
+					<?php } /* Note. This part is from Unique theme by Justin Tadlock. @link: http://themeforest.net/item/unique-customizable-wordpress-magazine-theme/3004185?ref=greenshady*/ ?>
 				</select>
 			</p>
 			
@@ -230,5 +237,22 @@ class  Multi_Author_Widget extends WP_Widget {
 
 /* register Multi Author Widget. */
 add_action( 'widgets_init', create_function( '', 'register_widget( "Multi_Author_Widget" );' ) );
+
+
+/**
+ * Plugin setup function.  Loads actions and filters to their appropriate hook.
+ *
+ * @since 0.1.0
+ */
+function multi_author_widget_setup() {
+	
+	/* Load the translation of the plugin. */
+	load_plugin_textdomain( 'multi-author-widget', false, 'multi-author-widget/languages' );
+	
+	
+}
+
+/* Set up the plugin on the 'plugins_loaded' hook. */
+add_action( 'plugins_loaded', 'multi_author_widget_setup' );
 
 ?>
