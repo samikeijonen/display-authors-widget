@@ -91,30 +91,28 @@ class  Multi_Author_Widget extends WP_Widget {
 
 				<div id="hcard-<?php echo str_replace( ' ', '-', get_the_author_meta( 'user_nicename', $id ) ); ?>" class="author-profile vcard clear">
 
+					<?php
+					
+					/* Output the authors gravatar if selected. */
+					if ( $instance['show_gravatar'] ) {
+	
+						$avatar = get_avatar( get_the_author_meta( 'user_email', $id ), $avatar_size, '', get_the_author_meta( 'display_name', $id ) );
+							
+						/* Get extra class from settings. */
+						$extra_class= 'multi-author-widget-' . $instance['avatar_align']; 
+						?>
+							
+						<div class="<?php echo $extra_class; ?>"><a href="<?php echo get_author_posts_url( $id ); ?>" title="<?php the_author_meta( 'display_name', $id ); ?>"><?php echo $avatar; ?></a></div>
+						
+					<?php } ?>
+					
 					<a href="<?php echo get_author_posts_url( $id ); ?>" title="<?php the_author_meta( 'display_name', $id ); ?>"><?php the_author_meta( 'display_name', $id ); ?></a>
+					
 					<?php 
 					/* If user post count is selected and user has posts, show it. */
 					if ( $instance['show_post_count'] && count_user_posts( $id ) > 0 )
 						printf( __( '(%d)', 'multi-author-widget' ), count_user_posts( $id ) );
 					?>
-					
-					<a href="<?php echo get_author_posts_url( $id ); ?>" title="<?php the_author_meta( 'display_name', $id ); ?>">
-						<?php
-						/* Output the authors gravatar if selected. */
-						if ( $instance['show_gravatar'] ) {
-							
-							$avatar = get_avatar( get_the_author_meta( 'user_email', $id ), $avatar_size, '', get_the_author_meta( 'display_name', $id ) );
-							
-							/* Get extra class from settings. */
-							$extra_class= 'multi-author-widget-' . $instance['avatar_align']; 
-							?>
-							
-							<div class="<?php echo $extra_class; ?>"><?php echo $avatar; ?></div>
-							
-							<?php	
-						}
-						?>
-					</a>
 
 					<?php
 					/* Show bio if selected. */
@@ -125,8 +123,6 @@ class  Multi_Author_Widget extends WP_Widget {
 				</div><!-- .author-profile .vcard -->
 			
 			<?php endforeach; ?>
-			
-			<div style="clear:both;">&nbsp;</div>
 			
 		<?php
 		/* Close the after widget HTML. */
@@ -265,10 +261,8 @@ function multi_author_widget_setup() {
 function multi_author_widget_styles() {
 
 	if ( !is_admin() )
-		wp_enqueue_style( 'multi-author-widget-css', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'css/multi-author-widget.css', false, 0.1, 'all' );
+		wp_enqueue_style( 'multi-author-widget-styles', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'css/multi-author-widget.css', false, 20122709, 'all' );
 	
 }
-
-
 
 ?>
