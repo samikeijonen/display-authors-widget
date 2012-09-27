@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Multi Author Widget v0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-26 16:22+0200\n"
-"PO-Revision-Date: 2012-09-26 16:25+0200\n"
+"POT-Creation-Date: 2012-09-27 18:41+0200\n"
+"PO-Revision-Date: 2012-09-27 18:41+0200\n"
 "Last-Translator: Sami Keijonen <sami.keijonen@foxnet.fi>\n"
 "Language-Team: Foxnet <sami.keijonen@foxnet.fi>\n"
 "Language: fi\n"
@@ -30,50 +30,50 @@ msgstr "Multi Author Widget"
 msgid "(%d)"
 msgstr "(%d)"
 
-#: multi-author-widget.php:169
+#: multi-author-widget.php:170
 msgid "Authors"
 msgstr "Kirjoittajat"
 
-#: multi-author-widget.php:185
+#: multi-author-widget.php:186
 msgid "Title:"
 msgstr "Otsikko:"
 
-#: multi-author-widget.php:190
+#: multi-author-widget.php:191
 msgid "Role:"
 msgstr "Rooli:"
 
-#: multi-author-widget.php:200
+#: multi-author-widget.php:201
 msgid "Display Post Count?"
 msgstr "Näytä artikkelien lukumäärä?"
 
-#: multi-author-widget.php:205
+#: multi-author-widget.php:206
 msgid "Display Author Bio?"
 msgstr "Näytä bio?"
 
-#: multi-author-widget.php:210
+#: multi-author-widget.php:211
 msgid "Display Author Gravatar?"
 msgstr "Näytä gravatar?"
 
-#: multi-author-widget.php:214
+#: multi-author-widget.php:215
 msgid "Gravatar Size:"
 msgstr "Gravatarin koko:"
 
-#: multi-author-widget.php:219
+#: multi-author-widget.php:220
 msgid "Gravatar Alignment:"
 msgstr "Gravatarin asemointi:"
 
-#: multi-author-widget.php:221
+#: multi-author-widget.php:222
 msgid "None"
 msgstr "Ei mitään"
 
-#: multi-author-widget.php:221
+#: multi-author-widget.php:222
 msgid "Left"
 msgstr "Vasen"
 
-#: multi-author-widget.php:221
+#: multi-author-widget.php:222
 msgid "Right"
 msgstr "Oikea"
 
-#: multi-author-widget.php:229
+#: multi-author-widget.php:230
 msgid "Limit the number of authors displayed:"
 msgstr "Kuinka monta kirjoittajaa näytetään."
