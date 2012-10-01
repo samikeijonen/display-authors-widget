@@ -27,7 +27,7 @@
  *
  * @since 0.1.0
  */
-class  Multi_Author_Widget extends WP_Widget {
+class  Display_Authors_Widget extends WP_Widget {
 
 	/**
 	 * Set up the widget's unique name, ID, class, description, and other options.
@@ -233,23 +233,23 @@ class  Multi_Author_Widget extends WP_Widget {
 }
 
 /* register Display Authors Widget. */
-add_action( 'widgets_init', create_function( '', 'register_widget( "Multi_Author_Widget" );' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget( "Display_Authors_Widget" );' ) );
 
 /* Set up the plugin on the 'plugins_loaded' hook. */
-add_action( 'plugins_loaded', 'multi_author_widget_setup' );
+add_action( 'plugins_loaded', 'display_authors_widget_setup' );
 
 /**
  * Plugin setup function.  Loads actions and filters to their appropriate hook.
  *
  * @since 0.1.0
  */
-function multi_author_widget_setup() {
+function display_authors_widget_setup() {
 	
 	/* Load the translation of the plugin. */
 	load_plugin_textdomain( 'display-authors-widget', false, 'display-authors-widget/languages' );
 	
 	/* Enqueue styles. */
-	add_action( 'wp_enqueue_scripts', 'multi_author_widget_styles' );
+	add_action( 'wp_enqueue_scripts', 'display_authors_widget_styles' );
 	
 }
 
@@ -258,7 +258,7 @@ function multi_author_widget_setup() {
  *
  * @since 0.1.0
  */
-function multi_author_widget_styles() {
+function display_authors_widget_styles() {
 
 	if ( !is_admin() )
 		wp_enqueue_style( 'display-authors-widget-styles', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'css/display-authors-widget.css', false, 20122709, 'all' );
