@@ -27,7 +27,7 @@
  *
  * @since 0.1.0
  */
-class  Display_Authors_Widget extends WP_Widget {
+class Display_Authors_Widget extends WP_Widget {
 
 	/**
 	 * Set up the widget's unique name, ID, class, description, and other options.
@@ -79,13 +79,22 @@ class  Display_Authors_Widget extends WP_Widget {
 		if ( $instance['title'] )
 			echo $before_title . apply_filters( 'widget_title',  $instance['title'], $instance, $this->id_base ) . $after_title;
 		
+		
+		/* Query arguments. */
+		$query_args = array(
+			'role' => $instance['role'],
+			'number' => $limit
+			);
+		
 		/* Get only users by role, which user wants. */
-		$users = get_users( array( 'role' => $instance['role'], 'number' => $limit ) );
+		$users = get_users( apply_filters( 'display_authors_widget_query', $query_args ) );
 
 			foreach ( $users as $author ) :
 			
 			/* Get the author ID. */
 			$id = $author->ID;
+			
+			do_action( 'display_authors_widget_before' ); // action hook display_authors_widget_before
 			
 			?>
 
@@ -106,7 +115,11 @@ class  Display_Authors_Widget extends WP_Widget {
 						
 					<?php } ?>
 					
+					<?php do_action( 'display_authors_widget_before_author' ); // action hook display_authors_widget_before_author ?>
+					
 					<a href="<?php echo get_author_posts_url( $id ); ?>" title="<?php the_author_meta( 'display_name', $id ); ?>"><?php the_author_meta( 'display_name', $id ); ?></a>
+					
+					<?php do_action( 'display_authors_widget_after_author' ); // action hook display_authors_widget_after_author ?>
 					
 					<?php 
 					/* If user post count is selected and user has posts, show it. */
@@ -121,6 +134,8 @@ class  Display_Authors_Widget extends WP_Widget {
 					?>
 
 				</div><!-- .author-profile .vcard -->
+			
+			<?php do_action( 'display_authors_widget_after' ); // action hook display_authors_widget_after ?>
 			
 			<?php endforeach; ?>
 			
@@ -162,7 +177,7 @@ class  Display_Authors_Widget extends WP_Widget {
 	function form( $instance ) {
 
 		/* Set up the defaults. */
-		$defaults = array(
+		$defaults = apply_filters( 'display_authors_widget_defaults', array(
 			'title' 			=> __( 'Authors', 'display-authors-widget' ),
 			'role' 				=> 'editor',
 			'show_post_count'	=> 1,
@@ -172,7 +187,7 @@ class  Display_Authors_Widget extends WP_Widget {
 			'avatar_align'		=> 'alignleft',
 			'limit'				=> 50
 	
-		);
+		) );
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
 		
