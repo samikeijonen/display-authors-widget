@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Multi Author Widget
+ * Plugin Name: Display Authors Widget
  * Plugin URI: http://foxnet.fi/en
  * Description: Register widget to display authors by role in a sidebar.
  * Version: 0.1
@@ -23,7 +23,7 @@
  */
 
 /**
- * Multi Author Widget class.
+ * Display Authors Widget class.
  *
  * @since 0.1.0
  */
@@ -38,21 +38,21 @@ class  Multi_Author_Widget extends WP_Widget {
 
 		/* Set up the widget options. */
 		$widget_options = array(
-			'classname' => 'multi-author-widget',
-			'description' => esc_html__( 'Displays authors.', 'multi-author-widget' )
+			'classname' => 'display-authors-widget',
+			'description' => esc_html__( 'Displays authors by role.', 'display-authors-widget' )
 		);
 
 		/* Set up the widget control options. */
 		$control_options = array(
 			'width' => 200,
 			'height' => 350,
-			'id_base' => 'multi-author-widget'
+			'id_base' => 'display-authors-widget'
 		);
 
 		/* Create the widget. */
 		$this->WP_Widget(
-			'multi-author-widget',								// $this->id_base
-			__( 'Multi Author Widget', 'multi-author-widget' ),	// $this->name
+			'display-authors-widget',								// $this->id_base
+			__( 'Display Authors Widget', 'display-authors-widget' ),	// $this->name
 			$widget_options,									// $this->widget_options
 			$control_options									// $this->control_options
 		);
@@ -99,7 +99,7 @@ class  Multi_Author_Widget extends WP_Widget {
 						$avatar = get_avatar( get_the_author_meta( 'user_email', $id ), $avatar_size, '', get_the_author_meta( 'display_name', $id ) );
 							
 						/* Get extra class from settings. */
-						$extra_class= 'multi-author-widget-' . $instance['avatar_align']; 
+						$extra_class= 'display-authors-widget-' . $instance['avatar_align']; 
 						?>
 							
 						<div class="<?php echo $extra_class; ?>"><a href="<?php echo get_author_posts_url( $id ); ?>" title="<?php the_author_meta( 'display_name', $id ); ?>"><?php echo $avatar; ?></a></div>
@@ -111,7 +111,7 @@ class  Multi_Author_Widget extends WP_Widget {
 					<?php 
 					/* If user post count is selected and user has posts, show it. */
 					if ( $instance['show_post_count'] && count_user_posts( $id ) > 0 )
-						printf( __( '(%d)', 'multi-author-widget' ), count_user_posts( $id ) );
+						printf( __( '(%d)', 'display-authors-widget' ), count_user_posts( $id ) );
 					?>
 
 					<?php
@@ -163,7 +163,7 @@ class  Multi_Author_Widget extends WP_Widget {
 
 		/* Set up the defaults. */
 		$defaults = array(
-			'title' 			=> __( 'Authors', 'multi-author-widget' ),
+			'title' 			=> __( 'Authors', 'display-authors-widget' ),
 			'role' 				=> 'editor',
 			'show_post_count'	=> 1,
 			'show_bio' 			=> 1,
@@ -179,12 +179,12 @@ class  Multi_Author_Widget extends WP_Widget {
 		?>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'multi-author-widget' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'display-authors-widget' ); ?></label>
 				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
 			</p>
 			
 			<p>
-				<label for="<?php echo $this->get_field_id( 'role' ); ?>"><?php _e( 'Role:', 'multi-author-widget' ); ?></label> 
+				<label for="<?php echo $this->get_field_id( 'role' ); ?>"><?php _e( 'Role:', 'display-authors-widget' ); ?></label> 
 				<select class="widefat" id="<?php echo $this->get_field_id( 'role' ); ?>" name="<?php echo $this->get_field_name( 'role' ); ?>">
 				
 					<?php wp_dropdown_roles( $instance['role'] ); // Dropdown list of roles. ?>
@@ -194,28 +194,28 @@ class  Multi_Author_Widget extends WP_Widget {
 			
 			<p>
 				<input type="checkbox" value="1" <?php checked( '1', $instance['show_post_count'] ); ?> id="<?php echo $this->get_field_id( 'show_post_count' ); ?>" name="<?php echo $this->get_field_name( 'show_post_count' ); ?>" />
-				<label for="<?php echo $this->get_field_id( 'show_post_count' ); ?>"><?php _e( 'Display Post Count?' , 'multi-author-widget' ); ?></label> 
+				<label for="<?php echo $this->get_field_id( 'show_post_count' ); ?>"><?php _e( 'Display Post Count?' , 'display-authors-widget' ); ?></label> 
 			</p>
 
 			<p>
 				<input type="checkbox" value="1" <?php checked( '1', $instance['show_bio'] ); ?> id="<?php echo $this->get_field_id( 'show_bio' ); ?>" name="<?php echo $this->get_field_name( 'show_bio' ); ?>" />
-				<label for="<?php echo $this->get_field_id( 'show_bio' ); ?>"><?php _e( 'Display Author Bio?', 'multi-author-widget' ); ?></label> 
+				<label for="<?php echo $this->get_field_id( 'show_bio' ); ?>"><?php _e( 'Display Author Bio?', 'display-authors-widget' ); ?></label> 
 			</p>
 
 			<p>
 				<input type="checkbox" value="1" <?php checked( '1', $instance['show_gravatar'] ); ?> id="<?php echo $this->get_field_id( 'show_gravatar' ); ?>" name="<?php echo $this->get_field_name( 'show_gravatar' ); ?>" />
-				<label for="<?php echo $this->get_field_id( 'show_gravatar' ); ?>"><?php _e( 'Display Author Gravatar?' , 'multi-author-widget' ); ?></label> 
+				<label for="<?php echo $this->get_field_id( 'show_gravatar' ); ?>"><?php _e( 'Display Author Gravatar?' , 'display-authors-widget' ); ?></label> 
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'avatar_size' ); ?>"><?php _e( 'Gravatar Size:', 'multi-author-widget' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'avatar_size' ); ?>"><?php _e( 'Gravatar Size:', 'display-authors-widget' ); ?></label>
 				<input style="float:right;width:66px;" type="text" class="widefat" id="<?php echo $this->get_field_id( 'avatar_size' ); ?>" name="<?php echo $this->get_field_name( 'avatar_size' ); ?>" value="<?php echo $instance['avatar_size']; ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'avatar_align' ); ?>"><?php _e( 'Gravatar Alignment:', 'multi-author-widget' ); ?></label> 
+				<label for="<?php echo $this->get_field_id( 'avatar_align' ); ?>"><?php _e( 'Gravatar Alignment:', 'display-authors-widget' ); ?></label> 
 				<select style="float:right;max-width:66px;" class="widefat" id="<?php echo $this->get_field_id( 'avatar_align' ); ?>" name="<?php echo $this->get_field_name( 'avatar_align' ); ?>">
-					<?php foreach ( array( 'alignnone' => __( 'None', 'multi-author-widget'), 'alignleft' => __( 'Left', 'multi-author-widget' ), 'alignright' => __( 'Right', 'multi-author-widget' ) ) as $option_value => $option_label ) { ?>
+					<?php foreach ( array( 'alignnone' => __( 'None', 'display-authors-widget'), 'alignleft' => __( 'Left', 'display-authors-widget' ), 'alignright' => __( 'Right', 'display-authors-widget' ) ) as $option_value => $option_label ) { ?>
 						<option value="<?php echo $option_value; ?>" <?php selected( $instance['avatar_align'], $option_value ); ?>><?php echo $option_label; ?></option>
 					<?php } /* Note. This part is from Unique theme by Justin Tadlock. @link: http://themeforest.net/item/unique-customizable-wordpress-magazine-theme/3004185?ref=greenshady*/ ?>
 				</select>
@@ -223,7 +223,7 @@ class  Multi_Author_Widget extends WP_Widget {
 			
 			<p>
 				<input style="float:right;width:66px;" type="text" class="widefat" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" value="<?php echo $instance['limit']; ?>" />
-				<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit the number of authors displayed:', 'multi-author-widget' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit the number of authors displayed:', 'display-authors-widget' ); ?></label>
 			</p>
 
 		<div style="clear:both;">&nbsp;</div>
@@ -232,7 +232,7 @@ class  Multi_Author_Widget extends WP_Widget {
 
 }
 
-/* register Multi Author Widget. */
+/* register Display Authors Widget. */
 add_action( 'widgets_init', create_function( '', 'register_widget( "Multi_Author_Widget" );' ) );
 
 /* Set up the plugin on the 'plugins_loaded' hook. */
@@ -246,7 +246,7 @@ add_action( 'plugins_loaded', 'multi_author_widget_setup' );
 function multi_author_widget_setup() {
 	
 	/* Load the translation of the plugin. */
-	load_plugin_textdomain( 'multi-author-widget', false, 'multi-author-widget/languages' );
+	load_plugin_textdomain( 'display-authors-widget', false, 'display-authors-widget/languages' );
 	
 	/* Enqueue styles. */
 	add_action( 'wp_enqueue_scripts', 'multi_author_widget_styles' );
@@ -261,7 +261,7 @@ function multi_author_widget_setup() {
 function multi_author_widget_styles() {
 
 	if ( !is_admin() )
-		wp_enqueue_style( 'multi-author-widget-styles', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'css/multi-author-widget.css', false, 20122709, 'all' );
+		wp_enqueue_style( 'display-authors-widget-styles', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'css/display-authors-widget.css', false, 20122709, 'all' );
 	
 }
 

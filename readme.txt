@@ -1,4 +1,4 @@
-=== Multi Author Widget ===
+=== Display Authors Widget ===
 Contributors: sami.keijonen
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E65RCFVD3QGYU
 Tags: widget-only, widget, author, authors, multi, role 
@@ -16,7 +16,7 @@ This plugin register a widget to display authors by role in a sidebar. You can c
 
 = Usage =
 
-Go to Appearance >> Widgets. There you can find widget called Multi Author Widget. There are some settings in a widget.
+Go to Appearance >> Widgets. There you can find widget called Display Authors Widget. There are some settings in a widget.
 
 * Title: Set whatever title you want, or leave it blank to disable the title.
 * Role: Choose which role authors you want to display.
@@ -31,19 +31,19 @@ is Author name ($number).
 
 == Installation ==
 
-1. Upload `multi-author-widget` to the `/wp-content/plugins/` directory.
+1. Upload `display-authors-widget` to the `/wp-content/plugins/` directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
-1. Go to Appearance >> Widgets. There you can find widget called Multi Author Widget.
+1. Go to Appearance >> Widgets. There you can find widget called Display Authors Widget.
 
 == Frequently Asked Questions ==
 
 = I installed and activated this plugin. What to do next? =
 
-Go to Appearance >> Widgets. There you can find widget called Multi Author Widget. Just drag it in widget area, if your theme supports them.
+Go to Appearance >> Widgets. There you can find widget called Display Authors Widget. Just drag it in widget area, if your theme supports them.
 
 == Screenshots ==
 
-1. Multi Author Widget
+1. Display Authors Widget
 
 == Changelog ==
 

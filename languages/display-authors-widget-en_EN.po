@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Multi Author Widget v0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-27 18:40+0200\n"
-"PO-Revision-Date: 2012-09-27 18:40+0200\n"
+"POT-Creation-Date: 2012-10-01 17:02+0200\n"
+"PO-Revision-Date: 2012-10-01 17:03+0200\n"
 "Last-Translator: Sami Keijonen <sami.keijonen@foxnet.fi>\n"
 "Language-Team: Foxnet <sami.keijonen@foxnet.fi>\n"
 "Language: en_EN\n"
@@ -18,62 +18,62 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: multi-author-widget.php:42
-msgid "Displays authors."
+msgid "Displays authors by role."
 msgstr ""
 
 #: multi-author-widget.php:55
-msgid "Multi Author Widget"
+msgid "Display Authors Widget"
 msgstr ""
 
-#: multi-author-widget.php:98
+#: multi-author-widget.php:114
 #, php-format
 msgid "(%d)"
 msgstr ""
 
-#: multi-author-widget.php:170
+#: multi-author-widget.php:166
 msgid "Authors"
 msgstr ""
 
-#: multi-author-widget.php:186
+#: multi-author-widget.php:182
 msgid "Title:"
 msgstr ""
 
-#: multi-author-widget.php:191
+#: multi-author-widget.php:187
 msgid "Role:"
 msgstr ""
 
-#: multi-author-widget.php:201
+#: multi-author-widget.php:197
 msgid "Display Post Count?"
 msgstr ""
 
-#: multi-author-widget.php:206
+#: multi-author-widget.php:202
 msgid "Display Author Bio?"
 msgstr ""
 
-#: multi-author-widget.php:211
+#: multi-author-widget.php:207
 msgid "Display Author Gravatar?"
 msgstr ""
 
-#: multi-author-widget.php:215
+#: multi-author-widget.php:211
 msgid "Gravatar Size:"
 msgstr ""
 
-#: multi-author-widget.php:220
+#: multi-author-widget.php:216
 msgid "Gravatar Alignment:"
 msgstr ""
 
-#: multi-author-widget.php:222
+#: multi-author-widget.php:218
 msgid "None"
 msgstr ""
 
-#: multi-author-widget.php:222
+#: multi-author-widget.php:218
 msgid "Left"
 msgstr ""
 
-#: multi-author-widget.php:222
+#: multi-author-widget.php:218
 msgid "Right"
 msgstr ""
 
-#: multi-author-widget.php:230
+#: multi-author-widget.php:226
 msgid "Limit the number of authors displayed:"
 msgstr ""
