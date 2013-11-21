@@ -1,11 +1,13 @@
 <?php
 /**
  * Plugin Name: Display Authors Widget
- * Plugin URI: http://foxnet.fi/en
+ * Plugin URI: https://foxnet-themes.fi/downloads/display-authors-widget/
  * Description: Register widget to display authors by role in a sidebar.
- * Version: 0.1.1
+ * Version: 0.1.2
  * Author: Sami Keijonen
  * Author URI: http://foxnet.fi/en
+ * Text Domain: display-authors-widget
+ * Domain Path: /languages
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the GNU 
  * General Public License version 2, as published by the Free Software Foundation.  You may NOT assume 
@@ -52,7 +54,7 @@ class Display_Authors_Widget extends WP_Widget {
 		/* Create the widget. */
 		$this->WP_Widget(
 			'display-authors-widget',									// $this->id_base
-			__( 'Display Authors Widget', 'display-authors-widget' ),	// $this->name
+			_x( 'Display Authors Widget', 'Name of the widget in widget area.', 'display-authors-widget' ),	// $this->name
 			$widget_options,											// $this->widget_options
 			$control_options											// $this->control_options
 		);
