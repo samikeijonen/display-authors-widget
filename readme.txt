@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: widget-only, widget, author, authors, multi, role 
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,10 @@ Go to Appearance >> Widgets. There you can find widget called Display Authors Wi
 1. Display Authors Widget
 
 == Changelog ==
+
+= 1.1.1 =
+
+* Update Plugin and Author URL.
 
 = 1.1 =
 
