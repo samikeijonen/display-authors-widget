@@ -2,9 +2,9 @@
 Contributors: sami.keijonen
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E65RCFVD3QGYU
 Tags: widget-only, widget, author, authors, multi, role 
-Requires at least: 3.8
-Tested up to: 3.9
-Stable tag: 0.1.4
+Requires at least: 4.0
+Tested up to: 4.3
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,11 @@ Go to Appearance >> Widgets. There you can find widget called Display Authors Wi
 1. Display Authors Widget
 
 == Changelog ==
+
+= 1.1 =
+
+* Use PHP5 object constructors in Widgets (parent::__construct).
+* Tested up to 4.3.
 
 = 0.1.4 =
 
